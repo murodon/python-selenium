@@ -1,3 +1,4 @@
 requests
 boto3>=1.34.11
 selenium==3.141.0
+urllib3<2
