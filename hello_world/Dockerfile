@@ -1,4 +1,4 @@
-FROM public.ecr.aws/lambda/python:3.8
+FROM public.ecr.aws/lambda/python:3.9
 
 RUN yum install -y atk cups-libs gtk3 libXcomposite alsa-lib \
     libXcursor libXdamage libXext libXi libXrandr libXScrnSaver \
@@ -15,7 +15,7 @@ RUN yum install -y unzip && \
 RUN rm -rf /tmp/chromedriver.zip && rm -rf /tmp/headless-chromium.zip
 
 COPY requirements.txt ./
-RUN python3.8 -m pip install -r requirements.txt -t .
+RUN python3.9 -m pip install -r requirements.txt -t .
 
 COPY app.py ./
 
