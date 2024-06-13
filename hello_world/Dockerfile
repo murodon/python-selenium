@@ -1,9 +1,9 @@
-FROM public.ecr.aws/lambda/python:3.8
+FROM public.ecr.aws/lambda/python:3.11-x86_64
 
 RUN yum install -y atk cups-libs gtk3 libXcomposite alsa-lib \
     libXcursor libXdamage libXext libXi libXrandr libXScrnSaver \
     libXtst pango at-spi2-atk libXt xorg-x11-server-Xvfb \
-    xorg-x11-xauth dbus-glib dbus-glib-devel nss mesa-libgbm
+    xorg-x11-xauth dbus-glib dbus-glib-devel
 
 # headless-chromium v1.0.0-37 & chromedriver_linux64 2.37
 RUN yum install -y unzip && \
@@ -15,7 +15,7 @@ RUN yum install -y unzip && \
 RUN rm -rf /tmp/chromedriver.zip && rm -rf /tmp/headless-chromium.zip
 
 COPY requirements.txt ./
-RUN python3.8 -m pip install -r requirements.txt -t .
+RUN python3.11 -m pip install -r requirements.txt -t .
 
 COPY app.py ./
 
